@@ -1,0 +1,39 @@
+.card{
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 15px;
+    background-color: rgb(34, 34, 48);
+    margin-bottom: 2rem;
+    color: #ffffff;
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+.card-title{
+    color: #14a5ae;
+    font-size: 1.5rem;
+}
+.card-text{
+    font-size: 17px;
+    color: #ffffff;
+    font-family: Futura;
+    line-height: 20px;
+}
+.btw-link{
+    color: #8899a6;
+}
+.btw-link:hover{
+    color: #8899a6;
+    transition: .4s;
+    text-decoration: underline;
+}
+.profile-details{
+    box-shadow: none;
+    border-radius: 4px;
+}
+.profile-details .pr{
+    padding-right: 1rem;
+}
+.profile-details .bold-text{
+line-height: 22px;
+}
+.more-details .grey{
+    font-size: 1rem;
+}
