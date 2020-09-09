@@ -37,3 +37,20 @@ line-height: 22px;
 .more-details .grey{
     font-size: 1rem;
 }
+.latest-tweets .profile-details{
+    border: 1px solid #c9eaec;
+}
+.latest-tweets .badge-secondary {
+    font-family: Sofia;
+    font-weight: normal;
+    color: #fff;
+    background-color: #14a5ae;
+    width: 20%;
+    position: absolute;
+    top: -16px;
+    z-index: 1;
+    border-radius: 0;
+}
+.latest-tweet{
+    padding: 2rem 1rem 1rem;
+}

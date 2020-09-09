@@ -143,7 +143,7 @@ img#logo{
   .follow:hover{
       text-decoration: underline;
       color: #ffffff;
-      transition: .3s;
+      transition: .2s;
   }
 .bold-text{
     color: #ffffff;
