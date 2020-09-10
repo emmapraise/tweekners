@@ -20,6 +20,9 @@ body{
     outline: none;
     background: rgb(58, 61, 78);
 }
+.container{
+    padding: 0;
+}
 *, ::before, ::after {
     box-sizing: border-box;
 }
@@ -31,6 +34,9 @@ h1, h2, h3, h4, h5, p {
     display: flex;
     align-items: end;
     /* justify-content: space-between; */
+}
+.wrap{
+    flex-wrap: wrap;
 }
 img {
     vertical-align: middle;
@@ -106,7 +112,7 @@ img#logo{
     display: grid;
     grid-template-columns: 34% 1fr;
     border-radius: 7px;
-    grid-gap: 2rem;
+    grid-gap: 1rem;
     margin-top: 1rem;
     padding: .5rem ;
 }
@@ -120,7 +126,7 @@ img#logo{
     overflow-x: hidden;
     color: rgb(255, 255, 255);
     background-color: rgb(25, 25, 39);
-    min-width: 400px;
+    max-width: 400px;
     border-radius: 1.3rem;
     padding: 1rem;
 }
@@ -139,6 +145,9 @@ img#logo{
   }
   .profile img{
       padding-right: 1.1rem;
+  }
+  .more-details img{
+    padding: 0 1.1rem;
   }
   .follow:hover{
       text-decoration: underline;
@@ -279,12 +288,17 @@ transition: all 0.3s ease 0s;
 /* /////////////////////////////////////////// */
 .main{
     padding: 1rem;
+    min-width: 500px;
 }
 .mtb{
     margin: 1rem 0;
 }
 
-
+/* .navbar */
+.navbar-toggler{
+    line-height: 0;
+    padding:0;
+}
 
 
 /* media queries */
@@ -292,4 +306,50 @@ transition: all 0.3s ease 0s;
 {
     .container{
     max-width: 900px;
+}
+}
+@media (max-width: 768px)
+{
+    .sidebar{
+    display: none;
+    }
+    .main.dark{
+        grid-template-columns: 1fr;
+    }
+    .main {
+        min-width: auto;
+    }
+    .navbar{
+        padding-bottom: 0;
+    }
+    .navbar-brand, .nav-item{
+        padding: 0;
+    }
+    .navbar-collapse{
+        padding-top: 1rem;
+    }
+
+    .nav-item{
+        width: 100%;
+        text-align: center;
+    
+    }
+    
+    .navbar-nav{
+        align-items: center;
+    }
+    .form-inline{
+        margin: auto;
+    justify-items: center;
+    max-width: 250px;
+    grid-gap: 1rem;
+    }
+}
+
+
+@media (max-width: 425px)
+{
+    .main {
+        padding: 5px;
+    }
 }
