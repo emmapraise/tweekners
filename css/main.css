@@ -71,33 +71,42 @@ img#logo{
     background: rgb(20, 165, 174);
     border-radius: 4px;
 }
-.form-inline{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
+#logIn{
+    text-align: center;
+}
+#bold{
+    color: rgb(201, 234, 236);
 }
 .btn{
     border-radius: 0.4rem;
     font-size: .8rem;
     font-weight: bold;
-    width: 7rem;
+    min-width: 5rem;
+    padding: .4rem .8rem;
     font-family: Sofia;
     outline: none;
     cursor: pointer;
-    padding: 0.4rem;
 }
-.green-btn{
-    background-color: #1e363c;
-    color: #14af8b;
+.blue-btn{
+    color: rgb(201, 234, 236);
+    background: rgb(20, 165, 174);
 }
-.green-btn:hover {
-    color: rgb(255, 255, 255);
-    border-color: rgb(22, 122, 101);
+.blue-btn>a{
+    color: rgb(201, 234, 236);
+}
+.blue-btn>a:hover{
+    text-decoration: none;
+}
+.blue-btn:hover {
+    color: rgb(201, 234, 236);
+    background: rgba(20, 165, 174,0);
+    border-color: rgb(20, 165, 174);
     transition: all 0.4s ease 0s;
-    background-color: rgb(37, 44, 72);
 }
 .orange-btn{
     background-color: #423432;
+}
+.orange-btn >a{
     color: #ca843f;
 }
 .orange-btn:hover {
@@ -240,8 +249,10 @@ transition: all 0.3s ease 0s;
     cursor: pointer;
     align-items: center;
     margin-top: 1rem;
+    text-decoration: none;
 }
 .pad:hover{
+    text-decoration: none;
     background-color: rgba(255, 255, 255, 0.08);
 }
 .md-img{
@@ -260,6 +271,8 @@ transition: all 0.3s ease 0s;
     font-size: 1rem;
     font-family: Matteo;
     font-weight: bold;
+    
+    color: #ffffff;
 }
 .dropdown-menu{
     padding: .5rem;
@@ -274,10 +287,11 @@ transition: all 0.3s ease 0s;
     padding: .25rem;
 }
 .side-footer{
-    justify-content: flex-end;
+    justify-content: space-between;
+        align-items: center;
 }
-.side-footer a{
-    padding-right: 1rem;
+.side-footer .pl{
+    padding-left: .5rem;
 }
 .side-footer a:hover{
     text-decoration: none;
@@ -338,12 +352,12 @@ transition: all 0.3s ease 0s;
     .navbar-nav{
         align-items: center;
     }
-    .form-inline{
+    /* .form-inline{
         margin: auto;
     justify-items: center;
     max-width: 250px;
     grid-gap: 1rem;
-    }
+    } */
 }
 
 

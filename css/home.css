@@ -120,10 +120,13 @@ line-height: 24px;
     justify-content: center;
     width: 100%;
 }
-.load .more:hover{
+.load .more:hover, .full .more:hover{
     cursor: pointer;
     color: #ffffff;
     transition: .2s;
+}
+.full{
+    justify-content: flex-end;
 }
 
 
