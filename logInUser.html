@@ -181,6 +181,118 @@
           </div>
         </div>
 
+        <!-- togglesidebar -->
+        <div id="mySidebar" class="toggle_sidebar">
+           <!-- profile -->
+           <a href="javascript:void(0)" class="closeSide" onclick="closeNav()">×</a>
+
+        <div class="profile">
+          <div class="flex">
+            <img src="./assets/dp.svg" alt="dp" />
+            <div class="name">
+              <h1 class="bold-text">John Miloe</h1>
+              <p class="light-text">@john123</p>
+            </div>
+          </div>
+          <div class="follower flex">
+            <a href="" class="flex follow">
+              <h1 class="bold-text">3333</h1>
+              <p class="light-text">following</p>
+            </a>
+            <a href="" class="flex follow">
+              <h1 class="bold-text">45</h1>
+              <p class="light-text">followers</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- trends -->
+        <section class="trends paper">
+          <h3 class="header boldy pd">Trends for you</h3>
+          <hr class="hr" />
+          <div class="trend">
+            <a href="" class="trend-link">
+              <p class="grey">Trending in Nigeria</p>
+              <h3 class="boldy who">Starboy</h3>
+              <p class="grey value">111k Tweets</p>
+            </a>
+          </div>
+          <hr class="hr" />
+
+          <div class="trend">
+            <a href="" class="trend-link">
+              <p class="grey">Trending in Lagos</p>
+              <h3 class="boldy who">Laycon and Erica</h3>
+              <p class="grey value">5,233k Tweets</p>
+            </a>
+          </div>
+          <hr class="hr" />
+
+          <div class="trend">
+            <a href="" class="trend-link">
+              <p class="grey">Hip hop . Trending</p>
+              <h3 class="boldy who">#PepsiBBNTurnUp</h3>
+              <p class="grey withWho">
+                Trending with: #TeamTekno, #TeamBurna
+              </p>
+              <p class="grey value">1001k Tweets</p>
+            </a>
+          </div>
+          <hr class="hr" />
+
+          <div class="trend">
+            <a href="" class="trend-link">
+              <p class="grey">Food . Trending</p>
+              <h3 class="boldy who">Maggi Chicken</h3>
+              <p class="grey value">24.5k Tweets</p>
+            </a>
+          </div>
+          <hr class="hr" />
+
+          <div class="trend">
+            <a href="" class="trend-link">
+              <button class="more">Show more</button>
+            </a>
+          </div>
+        </section>
+
+        <!-- login -->
+        <a href="/logInUser.html" class="logCreate flex paper pad">
+          <img class="md-img" src="./assets/login.png" alt="" />
+          <p>Log in with your twitter account</p>
+        </a>
+
+        <!-- search dropdown -->
+        <a href=""
+          class=" logCreate flex paper pad "
+          data-toggle="modal" data-target="#exampleModal"
+        >
+          <img class="md-img" src="./assets//search.png" alt="" />
+          <p>Search for tweets</p>
+
+        </a>
+        <hr class="hr mt" />
+
+        <!-- sideFoot -->
+        <div class="side-footer flex">
+          <div class="text">
+            <a href="" class="grey">About</a>
+            <a href="" class="grey">Support</a>
+          </div>
+          <div class="img">
+            <a href="https://twitter.com/">
+              <img
+              class="small-icon"
+                src="./assets//twitter.png"
+                alt="twitter.com"
+              />
+            </a>
+          </div>
+        </div>
+        </div>
+        <div id="main">
+          <button class="openSide" onclick="openNav()">☰ Open Sidebar</button>  
+          </div>
         <!-- rightcontent -->
         <section class="main">
           <div class="content">
@@ -397,9 +509,32 @@
             </div>
           </div>
       </div>
+
+      <!-- graphs -->
+      <hr class="hr">
+      <!-- daily rhythm -->
+      <div class="row my_dataviz">
+        <h3>Daily Rhythm</h3>
+        <div id="my_dataviz" class="col-sm-12">
+        
+        </div>
+      </div>
+      <hr class="hr">
+      
         </section>
       </section>
     </div>
+    <button onclick="topFunction()" id="goTop" title="Go to top"><img src="./assets/arrow-down.svg" alt=""></button>
+
+ <!-- myjs -->
+ <script src="./js/main.js"></script>
+
+<!-- d3js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<!-- Load color palettes -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="./js/graph.js"></script>
+
 
     <!-- bootstrap -->
     <script
