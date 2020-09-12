@@ -65,19 +65,21 @@
           <!-- profile -->
           <div class="profile">
             <div class="flex">
-              <img src="{{ url_for('static', filename= './assets/dp.svg')}}" alt="dp" />
+              <img src="{{user.profile_image_url_https}}" alt="dp" />
               <div class="name">
-                <h1 class="bold-text">John Miloe</h1>
-                <p class="light-text">@John123</p>
+                <h1 class="bold-text">{{ user.name }}</h1>
+                <p class="light-text">@{{ user.screen_name }}</p>
               </div>
+              
             </div>
+          <div class="flex"><p class="light-text">{{user.description}} </p></div>
             <div class="follower flex">
               <a href="" class="flex follow">
-                <h1 class="bold-text">3333</h1>
+                <h1 class="bold-text">{{user.friends_count}}</h1>
                 <p class="light-text">following</p>
               </a>
               <a href="" class="flex follow">
-                <h1 class="bold-text">45</h1>
+                <h1 class="bold-text">{{user.followers_count}}</h1>
                 <p class="light-text">followers</p>
               </a>
             </div>
