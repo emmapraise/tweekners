@@ -23,7 +23,10 @@ def get_user(username = '_emmapraise'):
     user = api.get_user(username)
     return user
 
-    
+def get_user_timeline(username = '_emmapraise'):
+    usertime = api.user_timeline(username)
+    return usertime
+
 def get_tweets(username, top_only = True, start_date = current_date, end_date = days_before, max_tweets = 100):
     """This function get User username and return their recent tweet for the last 30days
     Input: 
@@ -105,7 +108,13 @@ news_sources = ['nytimes', 'bbcbreaking', 'bbcnews', 'bbcworld', 'theeconomist',
 @app.route('/')
 def home():
     myuser = get_user()
-    return render_template('index.html', user= myuser)
+    mytimeline = get_user_timeline()
+    return render_template('index.html', user = myuser,  user_time =mytimeline)
+
+@app.route('/loginuser')
+def loginuser():
+    # myuser = get_user()
+    return render_template('logInUser.html')
 
 @app.route('/user', methods = ['GET', 'POST'])
 def audit_user():
@@ -116,7 +125,8 @@ def audit_user():
 @app.route('/user/<string:name>')
 def user(name):
     usern = get_user(name)
-    return render_template('index.html', user=usern)
+    mytimeline = get_user_timeline(name)
+    return render_template('index.html', user=usern, user_time = mytimeline)
 
 
 if __name__ == '__main__':

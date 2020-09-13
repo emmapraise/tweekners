@@ -1,10 +1,13 @@
 .card{
     border: 1px solid rgba(0,0,0,0.4);
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: rgb(34, 34, 48);
     margin-bottom: 2rem;
     color: #ffffff;
     box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+.card-body{
+    padding: 1rem;
 }
 .card-title{
     color: #14a5ae;
@@ -27,30 +30,136 @@
 .profile-details{
     box-shadow: none;
     border-radius: 4px;
+    border: none;
+    line-height: 20px;
+    
 }
 .profile-details .pr{
     padding-right: 1rem;
 }
 .profile-details .bold-text{
-line-height: 22px;
+line-height: 24px;
+}
+.more-details{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
 }
 .more-details .grey{
     font-size: 1rem;
 }
-.latest-tweets .profile-details{
-    border: 1px solid #c9eaec;
+.more-details .flex{
+    padding-bottom: .5rem;
 }
+/* .latest-tweets .profile-details{
+    border: 1px solid #c9eaec;
+} */
 .latest-tweets .badge-secondary {
-    font-family: Sofia;
-    font-weight: normal;
-    color: #fff;
-    background-color: #14a5ae;
-    width: 20%;
-    position: absolute;
-    top: -16px;
+    color: black;
+    background-color: white;
+    text-align: center;
     z-index: 1;
+    top: -11px;
+    left: 1px;
+    position: absolute;
     border-radius: 0;
+   min-width: 30%;
+    font-family: Matteo;
+    font-size: 1.2rem;
+    padding-left: 0rem;
+    font-weight: normal;
 }
 .latest-tweet{
-    padding: 2rem 1rem 1rem;
+    padding: 2rem 1rem 0 1rem;
+}
+.latest-tweet .profile-details{
+    margin-bottom: 1rem;
+    padding: .5rem;
+}
+
+.cadet-bg{
+    border-left:3px solid cadetblue;
+    border-radius: 3px;
+/* border: 1px solid cadetblue; */
+}
+.orange-bg{
+    border-left:3px solid #ca843f;
+}
+.green-bg{
+    border-left:3px solid#14af8b;
+}
+.dark-bg{
+    border-left:3px solid rgb(25, 25, 39);
+}
+.tweet-span{
+    font-size: 1.2rem;
+    font-family: monospace;
+}
+/* .profile-details .light-text{
+    color: #ffffff; */
+.profile-details .link:hover{
+    color: #8899a6;
+    transition: .2s;
+}
+.profile-details .link1:hover{
+    color: #ffffff;
+    transition: .2s;
+}
+.profile-details .link2{
+    padding-left: .5rem;
+}
+.profile-details .link2:hover{
+    color: #535356;
+    transition: .2s;
+}
+
+.latest-tweet .flex , .wrap .flex, .more-details .flex{
+    align-items: center;
+}
+.load{
+    justify-content: center;
+    width: 100%;
+}
+.load .more:hover, .full .more:hover{
+    cursor: pointer;
+    color: #ffffff;
+    transition: .2s;
+}
+.full{
+    justify-content: flex-end;
+}
+
+
+
+
+
+
+
+
+
+/* media queries */
+@media (max-width: 768px)
+{
+    .more-details{
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 425px)
+{
+    .card-title{
+        font-size: 1.2rem;
+    }
+    .card-text {
+        font-size: 15px;
+    }
+    .bold-text{
+        font-size: 1rem;
+    }
+    .more-details .grey {
+        font-size: .8rem;
+    }
+   
+    .profile img {
+        padding-right: .5rem;
+    }
 }
