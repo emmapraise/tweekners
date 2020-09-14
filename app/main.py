@@ -129,5 +129,4 @@ def user(name):
     return render_template('index.html', user=usern, user_time = mytimeline)
 
 
-if __name__ == '__main__':
-	app.run(debug=True)
+
