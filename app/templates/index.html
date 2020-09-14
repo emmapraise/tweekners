@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css')}}" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/home.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/logInUser.css')}}" />
     <title>Home</title>
   </head>
   <body>
@@ -305,6 +306,18 @@
          
           <!-- welcome -->
           <div class="content">
+            <form class="form-inline my-2 my-lg-0 username" action="{{url_for('audit_user')}}" method="POST">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                  <input type="text" class="form-control" placeholder="Twitter username" aria-label="Recipient's username" aria-describedby="button-addon2" name="username">
+                  <div class="input-group-append">
+                      <button class="btn blue-btn">Analyze</button>
+                  </div>
+                </div>
+            </form>
+
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
