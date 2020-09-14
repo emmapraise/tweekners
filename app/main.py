@@ -4,11 +4,11 @@ import tweepy
 import GetOldTweets3 as got
 from datetime import date, timedelta
 
-consumer_key = '4UVqA44fSYOp1zeFGfsCVuZWf'
-consumer_secret = 'eccY5JdQxZOa2uOqaCVguvuhePFBMdXWGpu0hMqpWKmkcO1Qjc'
+consumer_key = 'PFhdQ6Sd4VaQyg9E3ffmsV12v'
+consumer_secret = 'A8I4iiryzTgvt20tFVCPG5pay2iZYFYAx82Ligk8APFtVidayS'
 
-access_token = '2960988395-EfALUKwhVrslW0vm6fmGwEKIu0Elv9IRR8IjF08'
-access_token_secret = 'FH0j7w0Iiqjh35Ek24h0UFUSiWPUeAi3HqCmTDpDHMyhr'
+access_token = '2960988395-CxEU9JnTuF27RKdO2HJ1CCCco0slnZnDrWNUFIO'
+access_token_secret = 'DAYgUKakqBJWSNcjTVmt1ICzjpmNk1hMkQcJYdg4PQ8Lk'
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)

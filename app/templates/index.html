@@ -354,10 +354,6 @@
                           <h1 class="bold-text">{{user.statuses_count}}</h1>
                           <p class="light-text pr">tweets</p>
                         </a>
-                        <a href="" class="flex follow">
-                          <h1 class="bold-text">532</h1>
-                          <p class="light-text pr">Retweets</p>
-                        </a>
                         <a href="https://twitter.com/{{user.screen_name}}/following" target='_blank' class="flex follow">
                           <h1 class="bold-text">{{user.friends_count}}</h1>
                           <p class="light-text pr">following</p>
@@ -410,13 +406,13 @@
           <div class="col-sm-12">
             <div class="card latest-tweet">
               <!-- <h1 class="bold-text">Last 12 tweets</h1> -->
-              <span class="badge badge-secondary">Last 8 tweets</span>
+              <span class="badge badge-secondary">Last 10 tweets</span>
               <div class="row">
-                {% for ustweet in user_time%}
+                {% for ustweet in user_time[:10]%}
                 <div class="col-sm-12 ">
                   <div class="card cadet-bg profile-details">
                     <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
-                      <a href="" class="light-text link2 ">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                      <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
                     </div>
                       <div class="">
                         <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
