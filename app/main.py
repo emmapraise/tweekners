@@ -15,7 +15,7 @@ access_token = '2960988395-CxEU9JnTuF27RKdO2HJ1CCCco0slnZnDrWNUFIO'
 access_token_secret = 'DAYgUKakqBJWSNcjTVmt1ICzjpmNk1hMkQcJYdg4PQ8Lk'
 
 twitter_blueprint = make_twitter_blueprint(api_key=consumer_key, api_secret=consumer_secret)
-app.register_blueprint(twitter_blueprint, url_prefix='/login')
+app.register_blueprint(twitter_blueprint)
 
 auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
 # auth.set_access_token(access_token, access_token_secret)
