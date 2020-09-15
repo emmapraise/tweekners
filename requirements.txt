@@ -6,6 +6,7 @@ colorama==0.4.3
 cssselect==1.1.0
 decorator==4.4.2
 Flask==1.1.2
+Flask-Dance==3.0.0
 GetOldTweets3==0.0.11
 gunicorn==20.0.4
 idna==2.10
