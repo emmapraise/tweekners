@@ -1,14 +1,21 @@
 from flask import Flask, render_template,url_for,request, redirect
+from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 import pandas as pd
 import tweepy
 import GetOldTweets3 as got
 from datetime import date, timedelta
+
+app = Flask(__name__)
+
 
 consumer_key = 'PFhdQ6Sd4VaQyg9E3ffmsV12v'
 consumer_secret = 'A8I4iiryzTgvt20tFVCPG5pay2iZYFYAx82Ligk8APFtVidayS'
 
 access_token = '2960988395-CxEU9JnTuF27RKdO2HJ1CCCco0slnZnDrWNUFIO'
 access_token_secret = 'DAYgUKakqBJWSNcjTVmt1ICzjpmNk1hMkQcJYdg4PQ8Lk'
+
+twitter_blueprint = make_twitter_blueprint(api_key=consumer_key, api_secret=consumer_secret)
+app.register_blueprint(twitter_blueprint)
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -63,8 +70,6 @@ def get_tweets(username, top_only = True, start_date = current_date, end_date = 
     
     return news_df
 
-app = Flask(__name__)
-
 def get_tweets_search(state, startdate, enddate, maxtweet):
     tweetCriteria = got.manager.TweetCriteria().setQuerySearch("Flood")\
                                             .setSince(startdate)\
@@ -111,10 +116,18 @@ def home():
     mytimeline = get_user_timeline()
     return render_template('index.html', user = myuser,  user_time =mytimeline)
 
-@app.route('/loginuser')
+@app.route('/loginuser', methods = ['GET', 'POST'])
 def loginuser():
-    # myuser = get_user()
-    return render_template('logInUser.html')
+    if not twitter.authorized:
+        return redirect(url_for('twitter.login'))
+    account_info = twitter.get('account/settings.json')
+
+    if account_info.ok:
+        account_info_json = account_info.json()
+        return render_template('loginuser.html', user_log = account_info_json)
+    
+    return '<h1> Request Failed </h1>'
+    # return render_template('logInUser.html')
 
 @app.route('/user', methods = ['GET', 'POST'])
 def audit_user():

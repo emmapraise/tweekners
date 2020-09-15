@@ -71,8 +71,9 @@
             </li>
           </ul>
 <div id="logIn">
-  <a href="{{ url_for('loginuser') }}"><button class="btn blue-btn " onclick="window.location.href='/logInUser.html'"> Log In With Twitter </button></a>
-
+  <form method="POST" action="{{url_for('loginuser')}}">
+  <button class="btn blue-btn " onclick="window.location.href='/logInUser.html'"> Log In With Twitter </button>
+</form>
 </div>
         </div>
       </nav>
@@ -405,7 +406,7 @@
         <div class="row latest-tweets">
           <div class="col-sm-12">
             <div class="card latest-tweet">
-              <!-- <h1 class="bold-text">Last 12 tweets</h1> -->
+              
               <span class="badge badge-secondary">Last 10 tweets</span>
               <div class="row">
                 {% for ustweet in user_time[:10]%}
