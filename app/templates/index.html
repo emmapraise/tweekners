@@ -71,8 +71,8 @@
             </li>
           </ul>
 <div id="logIn">
-  <form method="POST" action="{{url_for('loginuser')}}">
-  <button class="btn blue-btn " onclick="window.location.href='/logInUser.html'"> Log In With Twitter </button>
+  <form method="POST" action="{{url_for('login')}}">
+  <button class="btn blue-btn " > Log In With Twitter </button>
 </form>
 </div>
         </div>
@@ -156,7 +156,7 @@
           </section>
 
           <!-- login -->
-          <a href="{{ url_for('loginuser') }}" class="logCreate flex paper pad">
+          <a href="{{ url_for('login') }}" class="logCreate flex paper pad">
             <img class="md-img" src="{{ url_for('static', filename= './assets/login.png')}}" alt="" />
             <p>Log in with your twitter account</p>
           </a>
@@ -266,7 +266,7 @@
           </section>
 
           <!-- login -->
-          <a href="{{ url_for('loginuser') }}" class="logCreate flex paper pad">
+          <a href="{{ url_for('login') }}" class="logCreate flex paper pad">
             <img class="md-img" src="{{ url_for('static', filename= './assets/login.png')}}" alt="" />
             <p>Log in with your twitter account</p>
           </a>
@@ -325,7 +325,7 @@
                   <div class="card-body">
                     <h5 class="card-title boldy">👋🏽 Hello, Welcome to tweeter app</h5>
                     <p class="card-text ">This tool enables you to evaluate Twitter accounts. For example how automated they are, how many Retweets they post, or which websites they link to most often. 
-                      For now you can only see the twitter analysis of a random twitter user, <span><a href="{{ url_for('loginuser') }}"  class=" btw-link"> Login</a></span> to <b id='bold'>analyze</b> any twitter account</p>
+                      For now you can only see the twitter analysis of a random twitter user, <span><a href="{{ url_for('login') }}"  class=" btw-link"> Login</a></span> to <b id='bold'>analyze</b> any twitter account</p>
                     
                   </div>
                 </div>

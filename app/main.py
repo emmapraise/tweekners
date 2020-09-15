@@ -15,10 +15,10 @@ access_token = '2960988395-CxEU9JnTuF27RKdO2HJ1CCCco0slnZnDrWNUFIO'
 access_token_secret = 'DAYgUKakqBJWSNcjTVmt1ICzjpmNk1hMkQcJYdg4PQ8Lk'
 
 twitter_blueprint = make_twitter_blueprint(api_key=consumer_key, api_secret=consumer_secret)
-app.register_blueprint(twitter_blueprint)
+app.register_blueprint(twitter_blueprint, url_prefix='/login')
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
+# auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth)
 
@@ -116,8 +116,8 @@ def home():
     mytimeline = get_user_timeline()
     return render_template('index.html', user = myuser,  user_time =mytimeline)
 
-@app.route('/loginuser', methods = ['GET', 'POST'])
-def loginuser():
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
     if not twitter.authorized:
         return redirect(url_for('twitter.login'))
     account_info = twitter.get('account/settings.json')
