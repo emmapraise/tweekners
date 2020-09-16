@@ -11,8 +11,8 @@ app = Flask(__name__)
 consumer_key = 'PFhdQ6Sd4VaQyg9E3ffmsV12v'
 consumer_secret = 'A8I4iiryzTgvt20tFVCPG5pay2iZYFYAx82Ligk8APFtVidayS'
 
-access_token = '2960988395-CxEU9JnTuF27RKdO2HJ1CCCco0slnZnDrWNUFIO'
-access_token_secret = 'DAYgUKakqBJWSNcjTVmt1ICzjpmNk1hMkQcJYdg4PQ8Lk'
+# access_token = '2960988395-CxEU9JnTuF27RKdO2HJ1CCCco0slnZnDrWNUFIO'
+# access_token_secret = 'DAYgUKakqBJWSNcjTVmt1ICzjpmNk1hMkQcJYdg4PQ8Lk'
 
 twitter_blueprint = make_twitter_blueprint(api_key=consumer_key, api_secret=consumer_secret)
 app.register_blueprint(twitter_blueprint, url_prefix='/login')
@@ -124,7 +124,7 @@ def login():
 
     if account_info.ok:
         account_info_json = account_info.json()
-        return render_template('loginuser.html', user_log = account_info_json)
+        return redirect(url_for('user', name=account_info_json['screen_name']))
     
     return '<h1> Request Failed </h1>'
     # return render_template('logInUser.html')
