@@ -6,6 +6,7 @@ from flask_dance.consumer.storage.sqla import OAuthConsumerMixin, SQLAlchemyStor
 from flask_dance.consumer import oauth_authorized
 from sqlalchemy.orm.exc import NoResultFound
 import tweepy
+import os
 from datetime import date, timedelta
 
 app = Flask(__name__)
@@ -17,6 +18,9 @@ consumer_secret = 'A8I4iiryzTgvt20tFVCPG5pay2iZYFYAx82Ligk8APFtVidayS'
 
 # access_token = '2960988395-CxEU9JnTuF27RKdO2HJ1CCCco0slnZnDrWNUFIO'
 # access_token_secret = 'DAYgUKakqBJWSNcjTVmt1ICzjpmNk1hMkQcJYdg4PQ8Lk'
+
+app.config['SECRET_KEY'] = 'thisisthestart'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']  #'sqlite:///db.sqlite'
 
 twitter_blueprint = make_twitter_blueprint(api_key=consumer_key, api_secret=consumer_secret, redirect_to= 'login')
 app.register_blueprint(twitter_blueprint, url_prefix='/login')
