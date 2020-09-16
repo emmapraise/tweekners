@@ -27,7 +27,7 @@ app.register_blueprint(twitter_blueprint, url_prefix='/login')
 auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
 # auth.set_access_token(access_token, access_token_secret)
 
-api = tweepy.API(auth)
+api = tweepy.API(auth) 
 
 current_date = date.today().isoformat() 
 days_before = (date.today()-timedelta(days=30)).isoformat()
