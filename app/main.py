@@ -106,7 +106,7 @@ def audit_user():
 def user(name):
     usern = get_user(name)
     mytimeline = get_user_timeline(name)
-    return render_template('loginuser.html', user=usern, user_time = mytimeline)
+    return render_template('index.html', user=usern, user_time = mytimeline)
 
 @app.route('/logout', methods = ['GET', 'POST'])
 @login_required
