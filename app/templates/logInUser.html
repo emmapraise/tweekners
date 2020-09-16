@@ -1,312 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css')}}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/home.css')}}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/logInUser.css')}}" />
-    <title>Home</title>
-  </head>
-  <body>
-    <div class="container">
-      <!-- navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="{{ url_for('static', filename= './index.html')}}"
-          ><img src="./assets/logo.png" id="logo" alt="logo"
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="./index.html"
-                >Home <span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./search.html">Search</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Support</a>
-            </li>
-          </ul>
-          
-        </div>
-      </nav>
-
-      <!-- main -->
-      <section class="main dark">
-        <!-- sidebar -->
-        <div class="sidebar">
-          <!-- profile -->
-          <div class="profile">
-            <div class="flex">
-              <img src="./assets/dp.svg" alt="dp" />
-              <div class="name">
-                <h1 class="bold-text">Favor Stone</h1>
-                <p class="light-text">@fav99</p>
-              </div>
-            </div>
-            <div class="follower flex">
-              <a href="" class="flex follow">
-                <h1 class="bold-text">3333</h1>
-                <p class="light-text">following</p>
-              </a>
-              <a href="" class="flex follow">
-                <h1 class="bold-text">45</h1>
-                <p class="light-text">followers</p>
-              </a>
-            </div>
-          </div>
-
-          <!-- trends -->
-          <section class="trends paper">
-            <h3 class="header boldy pd">Trends for you</h3>
-            <hr class="hr" />
-            <div class="trend">
-              <a href="" class="trend-link">
-                <p class="grey">Trending in Nigeria</p>
-                <h3 class="boldy who">#PeriodChallenge</h3>
-                <p class="grey withWho">
-                  Trending with: #꿈_챌린지, #Dream_Challenge
-                                </p>
-                <p class="grey value">111k Tweets</p>
-              </a>
-            </div>
-            <hr class="hr" />
-           
-            
-           
-            
-            <div class="trend">
-              <a href="" class="trend-link">
-                <p class="grey"> Hip hop · Trending</p>
-                <h3 class="boldy who">Davido</h3>
-                <p class="grey withWho">
-                  Trending with: "FEM", O.B.O                </p>
-                <p class="grey value">91.4K Tweets</p>
-              </a>
-            </div>
-            <hr class="hr" />
-
-            <div class="trend">
-              <a href="" class="trend-link">
-                <p class="grey">Music . Trending</p>
-                <h3 class="boldy who">Grammy</h3>
-                <p class="grey value">            155K Tweets
-                </p>
-              </a>
-            </div>
-            <hr class="hr" />
-
-            <div class="trend">
-              <a href="" class="trend-link">
-                <p class="grey">Trending in Nigeria</p>
-
-                <h3 class="boldy who">                #BBNaijialockdown2020
-                </h3>
-                <p class="grey withWho">
-                  Trending with: #AllForNengi, #ShowmaxOnUs
-                </p>
-                <p class="grey value">7,749 Tweets</p>
-                
-              </a>
-            </div>
-            <hr class="hr" />
-
-            <div class="trend">
-              <a href="" class="trend-link">
-                <button class="more">Show more</button>
-              </a>
-            </div>
-          </section>
-
-          
-
-          <!-- search dropdown -->
-          <a href="./search.html"
-            class=" logCreate flex paper pad "
-     
-          >
-            <img class="md-img" src="./assets//search.png" alt="" />
-            <p>Search for tweets</p>
-
-            
-          </a>
-
-          <hr class="hr mt" />
-
-          <!-- sideFoot -->
-          <div class="side-footer flex">
-            <button class="btn orange-btn"> <a href="./logInUser.html">Sign out</a></button>
-
-           
-            <div class="flex">
-                <div class="text">
-                    <a href="" class="grey pl">About</a>
-                    <a href="" class="grey pl">Support</a>
-                  </div>
-                  <div class="img">
-                    <a href="https://twitter.com/" class="pl">
-                      <img
-                      class="small-icon"
-                        src="./assets//twitter.png"
-                        alt="twitter.com"
-                      />
-                    </a>
-                  </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- togglesidebar -->
-        <div id="mySidebar" class="toggle_sidebar">
-           <!-- profile -->
-           <a href="javascript:void(0)" class="closeSide" onclick="closeNav()">×</a>
-
-        <div class="profile">
-          <div class="flex">
-            <img src="./assets/dp.svg" alt="dp" />
-            <div class="name">
-              <h1 class="bold-text">John Miloe</h1>
-              <p class="light-text">@john123</p>
-            </div>
-          </div>
-          <div class="follower flex">
-            <a href="" class="flex follow">
-              <h1 class="bold-text">3333</h1>
-              <p class="light-text">following</p>
-            </a>
-            <a href="" class="flex follow">
-              <h1 class="bold-text">45</h1>
-              <p class="light-text">followers</p>
-            </a>
-          </div>
-        </div>
-
-        <!-- trends -->
-        <section class="trends paper">
-          <h3 class="header boldy pd">Trends for you</h3>
-          <hr class="hr" />
-          <div class="trend">
-            <a href="" class="trend-link">
-              <p class="grey">Trending in Nigeria</p>
-              <h3 class="boldy who">Starboy</h3>
-              <p class="grey value">111k Tweets</p>
-            </a>
-          </div>
-          <hr class="hr" />
-
-          <div class="trend">
-            <a href="" class="trend-link">
-              <p class="grey">Trending in Lagos</p>
-              <h3 class="boldy who">Laycon and Erica</h3>
-              <p class="grey value">5,233k Tweets</p>
-            </a>
-          </div>
-          <hr class="hr" />
-
-          <div class="trend">
-            <a href="" class="trend-link">
-              <p class="grey">Hip hop . Trending</p>
-              <h3 class="boldy who">#PepsiBBNTurnUp</h3>
-              <p class="grey withWho">
-                Trending with: #TeamTekno, #TeamBurna
-              </p>
-              <p class="grey value">1001k Tweets</p>
-            </a>
-          </div>
-          <hr class="hr" />
-
-          <div class="trend">
-            <a href="" class="trend-link">
-              <p class="grey">Food . Trending</p>
-              <h3 class="boldy who">Maggi Chicken</h3>
-              <p class="grey value">24.5k Tweets</p>
-            </a>
-          </div>
-          <hr class="hr" />
-
-          <div class="trend">
-            <a href="" class="trend-link">
-              <button class="more">Show more</button>
-            </a>
-          </div>
-        </section>
-
-        <!-- login -->
-        <a href="/logInUser.html" class="logCreate flex paper pad">
-          <img class="md-img" src="./assets/login.png" alt="" />
-          <p>Log in with your twitter account</p>
-        </a>
-
-        <!-- search dropdown -->
-        <a href=""
-          class=" logCreate flex paper pad "
-          data-toggle="modal" data-target="#exampleModal"
-        >
-          <img class="md-img" src="./assets//search.png" alt="" />
-          <p>Search for tweets</p>
-
-        </a>
-        <hr class="hr mt" />
-
-        <!-- sideFoot -->
-        <div class="side-footer flex">
-          <div class="text">
-            <a href="" class="grey">About</a>
-            <a href="" class="grey">Support</a>
-          </div>
-          <div class="img">
-            <a href="https://twitter.com/">
-              <img
-              class="small-icon"
-                src="./assets//twitter.png"
-                alt="twitter.com"
-              />
-            </a>
-          </div>
-        </div>
-        </div>
-        <div id="main">
-          <button class="openSide" onclick="openNav()">☰ Open Sidebar</button>  
-          </div>
+{% extends "base.html" %}
+{% block content %}
         <!-- rightcontent -->
         <section class="main">
+         
+          <!-- welcome -->
           <div class="content">
-            <form class="form-inline my-2 my-lg-0 username">
+            <form class="form-inline my-2 my-lg-0 username" action="{{url_for('audit_user')}}" method="POST">
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                  <input type="text" class="form-control" placeholder="Twitter username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <input type="text" class="form-control" placeholder="Twitter username" aria-label="Recipient's username" aria-describedby="button-addon2" name="username">
                   <div class="input-group-append">
                       <button class="btn blue-btn">Analyze</button>
                   </div>
                 </div>
             </form>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title boldy">👋🏽 Hello, Welcome to tweeter app</h5>
+                    <p class="card-text ">This tool enables you to evaluate Twitter accounts. For example how automated they are, how many Retweets they post, or which websites they link to most often. 
+                      For now you can only see the twitter analysis of a random twitter user, <span><a href="{{ url_for('login') }}"  class=" btw-link"> Login</a></span> to <b id='bold'>analyze</b> any twitter account</p>
+                    
+                  </div>
+                </div>
+              </div>
+          </div>
+
           <!-- profile -->
             <div class="row">
               <div class="col-sm-12">
@@ -314,36 +37,32 @@
                   <div class="card-body">
                     <div class="profile">
                       <div class="flex">
-                        <img src="./assets/dp.svg" alt="dp" />
+                        <img src="{{user.profile_image_url_https}}" alt="dp" />
                         <div class="name">
-                          <h1 class="bold-text">Favor Stone</h1>
-                          <p class="light-text">@fav99</p>
+                          <h1 class="bold-text">{{ user.name }}</h1>
+                          <p class="light-text">@{{ user.screen_name }}</p>
                         </div>
                       </div> 
                       <p class="bold-text">
-                        Coca-Cola only sold 25 bottles the first year but kept going. Never give up.
+                        {{user.description}}
                       </p>
                       <hr class="hr mtb" />
 
                       <div class="follower flex wrap">
-                        <a href="" class="flex follow">
-                          <h1 class="bold-text">5,1432</h1>
+                        <a href="https://twitter.com/{{user.screen_name}}/with_replies" target='blank' class="flex follow">
+                          <h1 class="bold-text">{{user.statuses_count}}</h1>
                           <p class="light-text pr">tweets</p>
                         </a>
-                        <a href="" class="flex follow">
-                          <h1 class="bold-text">532</h1>
-                          <p class="light-text pr">Retweets</p>
-                        </a>
-                        <a href="" class="flex follow">
-                          <h1 class="bold-text">3333</h1>
+                        <a href="https://twitter.com/{{user.screen_name}}/following" target='_blank' class="flex follow">
+                          <h1 class="bold-text">{{user.friends_count}}</h1>
                           <p class="light-text pr">following</p>
                         </a>
-                        <a href="" class="flex follow">
-                          <h1 class="bold-text">45</h1>
+                        <a href="https://twitter.com/{{user.screen_name}}/followers" target='_blank' class="flex follow">
+                          <h1 class="bold-text">{{user.followers_count}}</h1>
                           <p class="light-text pr">followers</p>
                         </a>
-                        <a href="" class="flex follow">
-                          <h1 class="bold-text">405</h1>
+                        <a href="https://twitter.com/{{user.screen_name}}/likes" target='_blank' class="flex follow">
+                          <h1 class="bold-text">{{user.favourites_count}} </h1>
                           <p class="light-text pr">likes</p>
                         </a>
                       </div>
@@ -352,21 +71,21 @@
                       <div class="more-details row">
                         
                           <div class="flex date-joined">
-                            <img src="./assets/datePickerIcon.svg" alt="date-joined">
-                            <p class="grey">2008-01-08, 15:18 (over 12 years ago)</p>
+                            <img src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="date-joined">
+                            <p class="grey">{{user.created_at.strftime('%B')}}, {{user.created_at.day}}, {{user.created_at.year}} </p>
                           </div>
                           <div class="flex id">
-                            <img src="./assets/datePickerIcon.svg" alt="date-joined">
-                            <p class="grey">11985982</p>
+                            <img src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="date-joined">
+                            <p class="grey">{{user.id}} </p>
                           </div>
                           
                             <div class="flex bio-url">
-                              <img src="./assets/datePickerIcon.svg" alt="date-joined">
-                              <a href="" class="grey">https://tweetapp.netlify.app/</a>
+                              <img src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="date-joined">
+                              <a href="" class="grey">{{user.url}}</a>
                             </div>
                             <div class="flex location">
-                              <img src="./assets/datePickerIcon.svg" alt="date-joined">
-                              <p class="grey">Altenbeken, Germany</p>
+                              <img src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="date-joined">
+                              <p class="grey">{{user.location}}</p>
                             </div>
                         </div>
 
@@ -385,121 +104,30 @@
         <div class="row latest-tweets">
           <div class="col-sm-12">
             <div class="card latest-tweet">
-              <!-- <h1 class="bold-text">Last 12 tweets</h1> -->
-              <span class="badge badge-secondary">Last 8 tweets</span>
+              
+              <span class="badge badge-secondary">Last 10 tweets</span>
               <div class="row">
+                {% for ustweet in user_time[:10]%}
                 <div class="col-sm-12 ">
                   <div class="card cadet-bg profile-details">
-                    <div class="flex"><a href="" class="bold-text link1">Favor Stone</a>
-                      <a href="" class="light-text link2 ">@fav99 · 2019-08-22, 20:44</a>
+                    <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                      <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
                     </div>
                       <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span">It seems so, yes. And Twitter wrote that the majority of the a…</span>
-                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
+                        <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                        <span class="tweet-span">{{ustweet.text}}</span>
+                        <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                      </div>
+                      <div class="full flex">
+                        <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                          <button class="more">Show full tweet</button>
+                        </a>
                       </div>
                     </div>
                 </div>
-                <div class="col-sm-12 ">
-                  <div class="card orange-bg profile-details">
-                    <div class="flex"><a href="" class="bold-text link1">Favor Stone</a>
-                      <a href="" class="light-text link2 ">@fav99 · 2019-08-22, 20:44</a>
-                    </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span">It seems so, yes. And Twitter wrote that the majority of the a…</span>
-                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-12 ">
-                  <div class="card green-bg profile-details">
-                    <div class="flex"><a href="" class="bold-text link1">Favor Stone</a>
-                      <a href="" class="light-text link2 ">@fav99 · 2019-08-22, 20:44</a>
-                    </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span">It seems so, yes. And Twitter wrote that the majority of the a…</span>
-                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-12 ">
-                  <div class="card dark-bg profile-details">
-                    <div class="flex"><a href="" class="bold-text link1">Favor Stone</a>
-                      <a href="" class="light-text link2 ">@fav99 · 2019-08-22, 20:44</a>
-                    </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span">It seems so, yes. And Twitter wrote that the majority of the a…</span>
-                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-12 ">
-                  <div class="card cadet-bg profile-details">
-                    <div class="flex"><a href="" class="bold-text link1">Favor Stone</a>
-                      <a href="" class="light-text link2 ">@fav99 · 2019-08-22, 20:44</a>
-                    </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span">It seems so, yes. And Twitter wrote that the majority of the a…</span>
-                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-12 ">
-                  <div class="card orange-bg profile-details">
-                    <div class="flex"><a href="" class="bold-text link1">Favor Stone</a>
-                      <a href="" class="light-text link2 ">@fav99 · 2019-08-22, 20:44</a>
-                    </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span">It seems so, yes. And Twitter wrote that the majority of the a…</span>
-                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-12 ">
-                  <div class="card green-bg profile-details">
-                    <div class="flex"><a href="" class="bold-text link1">Favor Stone</a>
-                      <a href="" class="light-text link2 ">@fav99 · 2019-08-22, 20:44</a>
-                    </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span">It seems so, yes. And Twitter wrote that the majority of the a…</span>
-                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-12 ">
-                  <div class="card dark-bg profile-details">
-                    <div class="flex"><a href="" class="bold-text link1">Favor Stone</a>
-                      <a href="" class="light-text link2 ">@fav99 · 2019-08-22, 20:44</a>
-                    </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span">It seems so, yes. And Twitter wrote that the majority of the a…</span>
-                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
-                      </div>
-                  </div>
-                </div>
+                {%endfor%}
+                
+                
                 <div class="load flex">
               <a href="" class="trend-link">
                 <button class="more">Load more</button>
@@ -508,49 +136,20 @@
               </div>
             </div>
           </div>
-      </div>
-
-      <!-- graphs -->
-      <hr class="hr">
-      <!-- daily rhythm -->
-      <div class="row my_dataviz">
-        <h3>Daily Rhythm</h3>
-        <div id="my_dataviz" class="col-sm-12">
-        
-        </div>
-      </div>
-      <hr class="hr">
       
+      
+        </div>
+        <!-- graphs -->
+        <hr class="hr">
+        <!-- daily rhythm -->
+        <div class="row my_dataviz">
+          <h3>Daily Rhythm</h3>
+          <div id="my_dataviz" class="col-sm-12">
+          
+          </div>
+        </div>
+        <hr class="hr">
+
+
         </section>
-      </section>
-    </div>
-    <button onclick="topFunction()" id="goTop" title="Go to top"><img src="./assets/arrow-down.svg" alt=""></button>
-
- <!-- myjs -->
- <script src="./js/main.js"></script>
-
-<!-- d3js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-<!-- Load color palettes -->
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<script src="./js/graph.js"></script>
-
-
-    <!-- bootstrap -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+{% endblock %}
