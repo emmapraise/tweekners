@@ -22,7 +22,7 @@
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="{{ url_for('static', filename= './index.html')}}"
-          ><img src="./assets/logo.png" id="logo" alt="logo"
+          ><img  src="{{ url_for('static', filename= './assets/logo.png')}}"  id="logo" alt="logo"
         /></a>
         <button
           class="navbar-toggler"
@@ -58,241 +58,6 @@
 
       <!-- main -->
       <section class="main dark">
-        <!-- sidebar -->
-        <div class="sidebar">
-          <!-- profile -->
-          <div class="profile">
-            <div class="flex">
-              <img src="./assets/dp.svg" alt="dp" />
-              <div class="name">
-                <h1 class="bold-text">Favor Stone</h1>
-                <p class="light-text">@fav99</p>
-              </div>
-            </div>
-            <div class="follower flex">
-              <a href="" class="flex follow">
-                <h1 class="bold-text">3333</h1>
-                <p class="light-text">following</p>
-              </a>
-              <a href="" class="flex follow">
-                <h1 class="bold-text">45</h1>
-                <p class="light-text">followers</p>
-              </a>
-            </div>
-          </div>
-
-          <!-- trends -->
-          <section class="trends paper">
-            <h3 class="header boldy pd">Trends for you</h3>
-            <hr class="hr" />
-            <div class="trend">
-              <a href="" class="trend-link">
-                <p class="grey">Trending in Nigeria</p>
-                <h3 class="boldy who">#PeriodChallenge</h3>
-                <p class="grey withWho">
-                  Trending with: #꿈_챌린지, #Dream_Challenge
-                                </p>
-                <p class="grey value">111k Tweets</p>
-              </a>
-            </div>
-            <hr class="hr" />
-           
-            
-           
-            
-            <div class="trend">
-              <a href="" class="trend-link">
-                <p class="grey"> Hip hop · Trending</p>
-                <h3 class="boldy who">Davido</h3>
-                <p class="grey withWho">
-                  Trending with: "FEM", O.B.O                </p>
-                <p class="grey value">91.4K Tweets</p>
-              </a>
-            </div>
-            <hr class="hr" />
-
-            <div class="trend">
-              <a href="" class="trend-link">
-                <p class="grey">Music . Trending</p>
-                <h3 class="boldy who">Grammy</h3>
-                <p class="grey value">            155K Tweets
-                </p>
-              </a>
-            </div>
-            <hr class="hr" />
-
-            <div class="trend">
-              <a href="" class="trend-link">
-                <p class="grey">Trending in Nigeria</p>
-
-                <h3 class="boldy who">                #BBNaijialockdown2020
-                </h3>
-                <p class="grey withWho">
-                  Trending with: #AllForNengi, #ShowmaxOnUs
-                </p>
-                <p class="grey value">7,749 Tweets</p>
-                
-              </a>
-            </div>
-            <hr class="hr" />
-
-            <div class="trend">
-              <a href="" class="trend-link">
-                <button class="more">Show more</button>
-              </a>
-            </div>
-          </section>
-
-          
-
-          <!-- search dropdown -->
-          <a href="./search.html"
-            class=" logCreate flex paper pad "
-     
-          >
-            <img class="md-img" src="./assets//search.png" alt="" />
-            <p>Search for tweets</p>
-
-            
-          </a>
-
-          <hr class="hr mt" />
-
-          <!-- sideFoot -->
-          <div class="side-footer flex">
-            <button class="btn orange-btn"> <a href="./logInUser.html">Sign out</a></button>
-
-           
-            <div class="flex">
-                <div class="text">
-                    <a href="" class="grey pl">About</a>
-                    <a href="" class="grey pl">Support</a>
-                  </div>
-                  <div class="img">
-                    <a href="https://twitter.com/" class="pl">
-                      <img
-                      class="small-icon"
-                        src="./assets//twitter.png"
-                        alt="twitter.com"
-                      />
-                    </a>
-                  </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- togglesidebar -->
-        <div id="mySidebar" class="toggle_sidebar">
-           <!-- profile -->
-           <a href="javascript:void(0)" class="closeSide" onclick="closeNav()">×</a>
-
-        <div class="profile">
-          <div class="flex">
-            <img src="./assets/dp.svg" alt="dp" />
-            <div class="name">
-              <h1 class="bold-text">John Miloe</h1>
-              <p class="light-text">@john123</p>
-            </div>
-          </div>
-          <div class="follower flex">
-            <a href="" class="flex follow">
-              <h1 class="bold-text">3333</h1>
-              <p class="light-text">following</p>
-            </a>
-            <a href="" class="flex follow">
-              <h1 class="bold-text">45</h1>
-              <p class="light-text">followers</p>
-            </a>
-          </div>
-        </div>
-
-        <!-- trends -->
-        <section class="trends paper">
-          <h3 class="header boldy pd">Trends for you</h3>
-          <hr class="hr" />
-          <div class="trend">
-            <a href="" class="trend-link">
-              <p class="grey">Trending in Nigeria</p>
-              <h3 class="boldy who">Starboy</h3>
-              <p class="grey value">111k Tweets</p>
-            </a>
-          </div>
-          <hr class="hr" />
-
-          <div class="trend">
-            <a href="" class="trend-link">
-              <p class="grey">Trending in Lagos</p>
-              <h3 class="boldy who">Laycon and Erica</h3>
-              <p class="grey value">5,233k Tweets</p>
-            </a>
-          </div>
-          <hr class="hr" />
-
-          <div class="trend">
-            <a href="" class="trend-link">
-              <p class="grey">Hip hop . Trending</p>
-              <h3 class="boldy who">#PepsiBBNTurnUp</h3>
-              <p class="grey withWho">
-                Trending with: #TeamTekno, #TeamBurna
-              </p>
-              <p class="grey value">1001k Tweets</p>
-            </a>
-          </div>
-          <hr class="hr" />
-
-          <div class="trend">
-            <a href="" class="trend-link">
-              <p class="grey">Food . Trending</p>
-              <h3 class="boldy who">Maggi Chicken</h3>
-              <p class="grey value">24.5k Tweets</p>
-            </a>
-          </div>
-          <hr class="hr" />
-
-          <div class="trend">
-            <a href="" class="trend-link">
-              <button class="more">Show more</button>
-            </a>
-          </div>
-        </section>
-
-        <!-- login -->
-        <a href="/logInUser.html" class="logCreate flex paper pad">
-          <img class="md-img" src="./assets/login.png" alt="" />
-          <p>Log in with your twitter account</p>
-        </a>
-
-        <!-- search dropdown -->
-        <a href=""
-          class=" logCreate flex paper pad "
-          data-toggle="modal" data-target="#exampleModal"
-        >
-          <img class="md-img" src="./assets//search.png" alt="" />
-          <p>Search for tweets</p>
-
-        </a>
-        <hr class="hr mt" />
-
-        <!-- sideFoot -->
-        <div class="side-footer flex">
-          <div class="text">
-            <a href="" class="grey">About</a>
-            <a href="" class="grey">Support</a>
-          </div>
-          <div class="img">
-            <a href="https://twitter.com/">
-              <img
-              class="small-icon"
-                src="./assets//twitter.png"
-                alt="twitter.com"
-              />
-            </a>
-          </div>
-        </div>
-        </div>
-        <div id="main">
-          <button class="openSide" onclick="openNav()">☰ Open Sidebar</button>  
-          </div>
         <!-- rightcontent -->
         <section class="main">
           <div class="content">
@@ -314,7 +79,7 @@
                   <div class="card-body">
                     <div class="profile">
                       <div class="flex">
-                        <img src="./assets/dp.svg" alt="dp" />
+                        <img  src="{{ url_for('static', filename= './assets/dp.svg')}}" alt="dp" />
                         <div class="name">
                           <h1 class="bold-text">Favor Stone</h1>
                           <p class="light-text">@fav99</p>
@@ -352,20 +117,20 @@
                       <div class="more-details row">
                         
                           <div class="flex date-joined">
-                            <img src="./assets/datePickerIcon.svg" alt="date-joined">
+                            <img src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}"  alt="date-joined">
                             <p class="grey">2008-01-08, 15:18 (over 12 years ago)</p>
                           </div>
                           <div class="flex id">
-                            <img src="./assets/datePickerIcon.svg" alt="date-joined">
+                            <img  src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="id">
                             <p class="grey">11985982</p>
                           </div>
                           
                             <div class="flex bio-url">
-                              <img src="./assets/datePickerIcon.svg" alt="date-joined">
+                              <img  src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt=" bio-url">
                               <a href="" class="grey">https://tweetapp.netlify.app/</a>
                             </div>
                             <div class="flex location">
-                              <img src="./assets/datePickerIcon.svg" alt="date-joined">
+                              <img  src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="location">
                               <p class="grey">Altenbeken, Germany</p>
                             </div>
                         </div>

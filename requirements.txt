@@ -19,7 +19,6 @@ MarkupSafe==1.1.1
 mccabe==0.6.1
 numpy==1.19.2
 oauthlib==3.1.0
-pandas==1.1.2
 parso==0.7.1
 pickleshare==0.7.5
 prompt-toolkit==3.0.7
