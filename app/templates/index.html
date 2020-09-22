@@ -1,92 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css')}}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/home.css')}}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/logInUser.css')}}" />
-    <title>Home</title>
-  </head>
-  <body>
-    <div class="container">
-      <!-- navbar -->
-      <nav class="navbar sticky-top navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="./index.html"
-          ><img src="{{ url_for('static', filename= './assets/logo.png')}}" id="logo" alt="logo"
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href=""
-                >Home <span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-  
-<li class="nav-item" data-toggle="modal" data-target="#exampleModal">
-  <a class="nav-link" href="#">Search</a>
-</li>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">You need to be logged in before you can search for tweets</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-footer">
-        <button class="btn blue-btn " onclick="window.location.href='/logInUser.html'"> Log In With Twitter </button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>   
-               <li class="nav-item">
-              <a class="nav-link" href="#">Support</a>
-            </li>
-          </ul>
-<div id="logIn">
-  <a href="{{ url_for('loginuser') }}"><button class="btn blue-btn " onclick="window.location.href='/logInUser.html'"> Log In With Twitter </button></a>
-
-</div>
-        </div>
-      </nav>
-
-      <!-- main -->
-      <section class="main dark">
-
-
-      
+{% extends "base.html" %}
+{% block content %}
         <!-- rightcontent -->
         <section class="main">
          
           <!-- welcome -->
           <div class="content">
+            {% if current_user.is_authenticated %}
             <form class="form-inline my-2 my-lg-0 username" action="{{url_for('audit_user')}}" method="POST">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -98,19 +17,22 @@
                   </div>
                 </div>
             </form>
-
+            {% endif %}
+            
+            {% if not current_user.is_authenticated %}
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title boldy">👋🏽 Hello, Welcome to tweeter app</h5>
                     <p class="card-text ">This tool enables you to evaluate Twitter accounts. For example how automated they are, how many Retweets they post, or which websites they link to most often. 
-                      For now you can only see the twitter analysis of a random twitter user, <span><a href="{{ url_for('loginuser') }}"  class=" btw-link"> Login</a></span> to <b id='bold'>analyze</b> any twitter account</p>
+                      For now you can only see the twitter analysis of a random twitter user, <span><a href="{{ url_for('login') }}"  class=" btw-link"> Login</a></span> to <b id='bold'>analyze</b> any twitter account</p>
                     
                   </div>
                 </div>
               </div>
           </div>
+          {% endif %}
 
           <!-- profile -->
             <div class="row">
@@ -134,10 +56,6 @@
                         <a href="https://twitter.com/{{user.screen_name}}/with_replies" target='blank' class="flex follow">
                           <h1 class="bold-text">{{user.statuses_count}}</h1>
                           <p class="light-text pr">tweets</p>
-                        </a>
-                        <a href="" class="flex follow">
-                          <h1 class="bold-text">532</h1>
-                          <p class="light-text pr">Retweets</p>
                         </a>
                         <a href="https://twitter.com/{{user.screen_name}}/following" target='_blank' class="flex follow">
                           <h1 class="bold-text">{{user.friends_count}}</h1>
@@ -190,14 +108,14 @@
         <div class="row latest-tweets">
           <div class="col-sm-12">
             <div class="card latest-tweet">
-              <!-- <h1 class="bold-text">Last 12 tweets</h1> -->
-              <span class="badge badge-secondary">Last 8 tweets</span>
+              
+              <span class="badge badge-secondary">Last 10 tweets</span>
               <div class="row">
-                {% for ustweet in user_time%}
+                {% for ustweet in user_time[:10]%}
                 <div class="col-sm-12 ">
                   <div class="card cadet-bg profile-details">
                     <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
-                      <a href="" class="light-text link2 ">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                      <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
                     </div>
                       <div class="">
                         <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
@@ -238,35 +156,4 @@
 
 
         </section>
-      </section>
-    </div>
-    <button onclick="topFunction()" id="goTop" title="Go to top"><img src="{{ url_for('static', filename= './assets/arrow-down.svg')}}" alt=""></button>
-  
-    <!-- myjs -->
-<script src="{{ url_for('static', filename= './js/main.js')}}"></script>
-
-<!-- d3js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-<!-- Load color palettes -->
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<script src="{{ url_for('static', filename= './js/graph.js')}}"></script>
-
-
-    <!-- bootstrap -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+{% endblock %}
