@@ -132,85 +132,10 @@ img#logo {
 
 .main.dark {
   background-color: rgb(25, 25, 39);
-  display: grid;
-  grid-template-columns: 34% 1fr;
   border-radius: 7px;
-  grid-gap: 1rem;
-  /* margin-top: 1rem; */
   padding: 0.5rem;
 }
 
-.sidebar,
-.toggle_sidebar {
-  max-height: 94vh;
-  position: sticky;
-  top: 2rem;
-  left: 1.8rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  color: rgb(255, 255, 255);
-  background-color: rgb(25, 25, 39);
-  max-width: 400px;
-  border-radius: 1.3rem;
-  padding: 1rem;
-}
-
-.sidebar::-webkit-scrollbar,
-.toggle_sidebar::-webkit-scrollbar {
-  width: 0.8rem;
-}
-
-.sidebar::-webkit-scrollbar-track,
-.toggle_sidebar::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-.sidebar::-webkit-scrollbar-thumb,
-.toggle_sidebar::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
-.toggle_sidebar {
-  display: none;
-  border-radius: 0rem;
-  padding-left: 3.5rem;
-  height: auto;
-  width: 0;
-  position: fixed;
-  z-index: 3;
-  top: 54px;
-  left: -36px;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 40px;
-}
-
-.toggle_sidebar .closeSide {
-  position: absolute;
-  top: -13px;
-  font-size: 36px;
-  margin-left: 50px;
-  left: 40%;
-}
-
-.openSide {
-  font-size: 15px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  font-family: Sofia;
-  border: none;
-}
-.closeSide {
-  color: #ca843f;
-}
-.openSide:hover,
-.closeSide:hover {
-  text-decoration: none;
-  color: #444;
-  transition: 0.3s;
-}
 
 #main {
   transition: margin-left 0.5s;
@@ -218,8 +143,13 @@ img#logo {
   display: none;
   margin-bottom: -15px;
 }
+.profile>div.flex{
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
 .profile img {
-  padding-right: 1.1rem;
+  margin-right: 1.1rem;
+  border-radius: 50%;
 }
 .more-details img {
   padding: 0 1.1rem;
@@ -374,7 +304,6 @@ img#logo {
 /* /////////////////////////////////////////// */
 .main {
   padding: 1rem;
-  min-width: 500px;
 }
 .mtb {
   margin: 1rem 0;
@@ -449,13 +378,6 @@ img#logo {
   .toggle_sidebar,
   #main {
     display: block;
-  }
-  .main.dark {
-    grid-template-columns: 1fr;
-  }
-  .main {
-    min-width: auto;
-    padding-left: 3rem;
   }
   .navbar {
     padding-bottom: 0;
