@@ -11,8 +11,6 @@ from datetime import date, timedelta
 
 app = Flask(__name__)
 
-
-
 consumer_key = 'PFhdQ6Sd4VaQyg9E3ffmsV12v'
 consumer_secret = 'A8I4iiryzTgvt20tFVCPG5pay2iZYFYAx82Ligk8APFtVidayS'
 
