@@ -1,3 +1,4 @@
+from enum import unique
 from flask import Flask, render_template,url_for,request, redirect
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 from flask_sqlalchemy import SQLAlchemy
@@ -48,6 +49,7 @@ login_manager.login_view = 'login'
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(250), unique=True)
+    user_name = db.Column(db.String(250))
 
 class OAuth(OAuthConsumerMixin, db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(User.id))
@@ -66,6 +68,10 @@ def home():
     mytimeline = get_user_timeline()
     return render_template('index.html', user = myuser,  user_time =mytimeline)
 
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
     if not twitter.authorized:
@@ -80,13 +86,14 @@ def twitter_logged_in(blueprint, token):
     if account_info.ok:
         account_info_json = account_info.json()
         username = account_info_json['screen_name']
+        user_name = account_info_json['name']
 
         query = User.query.filter_by(username=username)
 
         try:
             user= query.one()
         except NoResultFound:
-            user = User(username=username)
+            user = User(username=username, user_name = user_name)
             db.session.add(user)
             db.session.commit()
 
