@@ -82,6 +82,13 @@ line-height: 24px;
     border-radius: 3px;
 /* border: 1px solid cadetblue; */
 }
+
+.cadet-orange{
+    border-left:3px solid #ca843f;
+    border-radius: 3px;
+/* border: 1px solid cadetblue; */
+}
+
 .orange-bg{
     border-left:3px solid #ca843f;
 }

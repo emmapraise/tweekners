@@ -6,7 +6,7 @@ from flask_login import UserMixin, current_user, LoginManager, login_required, l
 from flask_dance.consumer.storage.sqla import OAuthConsumerMixin, SQLAlchemyStorage
 from flask_dance.consumer import oauth_authorized
 from sqlalchemy.orm.exc import NoResultFound
-import tweepy
+from .gettweets import get_tweets_search, get_user,get_user_timeline
 import os
 from datetime import date, timedelta
 
@@ -27,21 +27,10 @@ db = SQLAlchemy(app)
 twitter_blueprint = make_twitter_blueprint(api_key=consumer_key, api_secret=consumer_secret, redirect_to= 'login')
 app.register_blueprint(twitter_blueprint, url_prefix='/login')
 
-auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
-# auth.set_access_token(access_token, access_token_secret)
-
-api = tweepy.API(auth, wait_on_rate_limit=True) 
 
 current_date = date.today().isoformat() 
 days_before = (date.today()-timedelta(days=30)).isoformat()
 
-def get_user(username = '_emmapraise'):
-    user = api.get_user(username)
-    return user
-
-def get_user_timeline(username = '_emmapraise'):
-    usertime = api.user_timeline(username)
-    return usertime
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -70,7 +59,8 @@ def home():
 
 @app.route('/search')
 def search():
-    return render_template('search.html')
+    tweets = get_tweets_search()
+    return render_template('search.html', tweets = tweets)
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
@@ -100,6 +90,20 @@ def twitter_logged_in(blueprint, token):
         login_user(user)
     return redirect(url_for('user', name=account_info_json['screen_name']))
 
+
+
+@app.route('/search', methods = ['GET', 'POST'])
+def audit_search():
+    if request.method == 'POST':
+        query = request.form['query']
+        return redirect(url_for('getsearch', name=query))
+
+@app.route('/search/<string:name>')
+# @login_required
+def getsearch(name):
+    newtweets = get_tweets_search(name)
+    return render_template('search.html', tweets = newtweets, name = name)
+
 @app.route('/user', methods = ['GET', 'POST'])
 def audit_user():
     if request.method == 'POST':
@@ -111,7 +115,7 @@ def audit_user():
 def user(name):
     usern = get_user(name)
     mytimeline = get_user_timeline(name)
-    return render_template('index.html', user=usern, user_time = mytimeline)
+    return render_template('index.html', user=usern, user_time = mytimeline, name = name)
 
 @app.route('/logout', methods = ['GET', 'POST'])
 @login_required

@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="./index.html">Home </a>
+              <a class="nav-link" href="/">Home </a>
             </li>
 
             <li class="nav-item">
@@ -64,14 +64,16 @@
         <!-- rightcontent -->
         <section class="main">
           <!-- searched-tweet -->
-          <form class="form-inline my-2 my-lg-0 search">
+          <form class="form-inline my-2 my-lg-0 search" action="{{url_for('audit_search')}}" method="POST">
             <div class="input-group">
               <input
                 type="text"
                 class="form-control"
-                placeholder="Search for tweet"
+                placeholder="EndSars"
                 aria-label="Search for tweet"
                 aria-describedby="button-addon2"
+                name="query"
+                value="{{name}}"
               />
               <div class="input-group-append">
                 <button class="btn blue-btn">Search</button>
@@ -82,223 +84,66 @@
             <div class="col-sm-12">
               <div class="card latest-tweet">
                 <!-- <h1 class="bold-text">Last 12 tweets</h1> -->
+
+                
                 <div class="row">
-                  <div class="col-sm-6">
-                    <div class="card cadet-bg profile-details small-font">
+                  {% for ustweet in tweets%}
+                  <div class="col-sm-6 ">
+                  {% if ustweet.text[:2] == 'RT' %}
+                  <div class="card orange-bg profile-details">
+                    
+                    <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                      <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                    </div>
                       <div class="">
-                        <a href="" class="bold-text link1">Favor Stone</a>
-                        <a href="" class="light-text link2"
-                          >@Favor123 · 2019-08-22, 20:44</a
-                        >
-                      </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span"
-                          >It seems so, yes. And Twitter wrote that the majority
-                          of the a…</span
-                        >
-                        <a href="" class="grey link">
-                          https://t.co/vWz4qAmV1j</a
-                        >
+                        <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                        <span class="tweet-span">{{ustweet.text}}</span>
+                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
                       </div>
                       <div class="full flex">
-                        <a href="" class="trend-link">
+                        <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
                           <button class="more">Show full tweet</button>
                         </a>
                       </div>
                     </div>
+                    {% elif ustweet.text[0] == '@' %}
+                    <div class="card green-bg profile-details">
+                    
+                      <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                        <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                      </div>
+                        <div class="">
+                          <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                          <span class="tweet-span">{{ustweet.text}}</span>
+                          <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                        </div>
+                        <div class="full flex">
+                          <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                            <button class="more">Show full tweet</button>
+                          </a>
+                        </div>
+                      </div>
+                      {% else %}
+                      <div class="card cadet-bg profile-details">
+                    
+                        <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                          <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                        </div>
+                          <div class="">
+                            <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                            <span class="tweet-span">{{ustweet.text}}</span>
+                            <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                          </div>
+                          <div class="full flex">
+                            <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                              <button class="more">Show full tweet</button>
+                            </a>
+                          </div>
+                        </div>
+                    {% endif %}
                   </div>
-                  <div class="col-sm-6">
-                    <div class="card orange-bg profile-details small-font">
-                      <div class="">
-                        <a href="" class="bold-text link1">Favor Stone</a>
-                        <a href="" class="light-text link2"
-                          >@Favor123 · 2019-08-22, 20:44</a
-                        >
-                      </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span"
-                          >It seems so, yes. And Twitter wrote that the majority
-                          of the a…</span
-                        >
-                        <a href="" class="grey link">
-                          https://t.co/vWz4qAmV1j</a
-                        >
-                      </div>
-                      <div class="full flex">
-                        <a href="" class="trend-link">
-                          <button class="more">Show full tweet</button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="card green-bg profile-details small-font">
-                      <div class="">
-                        <a href="" class="bold-text link1">Favor Stone</a>
-                        <a href="" class="light-text link2"
-                          >@Favor123 · 2019-08-22, 20:44</a
-                        >
-                      </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span"
-                          >It seems so, yes. And Twitter wrote that the majority
-                          of the a…</span
-                        >
-                        <a href="" class="grey link">
-                          https://t.co/vWz4qAmV1j</a
-                        >
-                      </div>
-                      <div class="full flex">
-                        <a href="" class="trend-link">
-                          <button class="more">Show full tweet</button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="card dark-bg profile-details small-font">
-                      <div class="">
-                        <a href="" class="bold-text link1">Favor Stone</a>
-                        <a href="" class="light-text link2"
-                          >@fav99 · 2019-08-22, 20:44</a
-                        >
-                      </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span"
-                          >It seems so, yes. And Twitter wrote that the majority
-                          of the a…</span
-                        >
-                        <a href="" class="grey link">
-                          https://t.co/vWz4qAmV1j</a
-                        >
-                      </div>
-                      <div class="full flex">
-                        <a href="" class="trend-link">
-                          <button class="more">Show full tweet</button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="card cadet-bg profile-details small-font">
-                      <div class="">
-                        <a href="" class="bold-text link1">John Stone</a>
-                        <a href="" class="light-text link2"
-                          >@fav99 · 2019-08-22, 20:44</a
-                        >
-                      </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span"
-                          >It seems so, yes. And Twitter wrote that the majority
-                          of the a…</span
-                        >
-                        <a href="" class="grey link">
-                          https://t.co/vWz4qAmV1j</a
-                        >
-                      </div>
-                      <div class="full flex">
-                        <a href="" class="trend-link">
-                          <button class="more">Show full tweet</button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="card orange-bg profile-details small-font">
-                      <div class="">
-                        <a href="" class="bold-text link1">John Stone</a>
-                        <a href="" class="light-text link2"
-                          >@fav99 · 2019-08-22, 20:44</a
-                        >
-                      </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span"
-                          >It seems so, yes. And Twitter wrote that the majority
-                          of the a…</span
-                        >
-                        <a href="" class="grey link">
-                          https://t.co/vWz4qAmV1j</a
-                        >
-                      </div>
-                      <div class="full flex">
-                        <a href="" class="trend-link">
-                          <button class="more">Show full tweet</button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="card green-bg profile-details small-font">
-                      <div class="">
-                        <a href="" class="bold-text link1">John Stone</a>
-                        <a href="" class="light-text link2"
-                          >@fav99 · 2019-08-22, 20:44</a
-                        >
-                      </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span"
-                          >It seems so, yes. And Twitter wrote that the majority
-                          of the a…</span
-                        >
-                        <a href="" class="grey link">
-                          https://t.co/vWz4qAmV1j</a
-                        >
-                      </div>
-                      <div class="full flex">
-                        <a href="" class="trend-link">
-                          <button class="more">Show full tweet</button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="card dark-bg profile-details small-font">
-                      <div class="">
-                        <a href="" class="bold-text link1">John Stone</a>
-                        <a href="" class="light-text link2"
-                          >@fav99 · 2019-08-22, 20:44</a
-                        >
-                      </div>
-                      <div class="">
-                        <a href="" class="grey link"> @evaristegal0is</a>
-                        <a href="" class="grey link"> @3r1nG</a>
-                        <a href="" class="grey link"> @TechPoliticist</a>
-                        <span class="tweet-span"
-                          >It seems so, yes. And Twitter wrote that the majority
-                          of the a…</span
-                        >
-                        <a href="" class="grey link">
-                          https://t.co/vWz4qAmV1j</a
-                        >
-                      </div>
-                      <div class="full flex">
-                        <a href="" class="trend-link">
-                          <button class="more">Show full tweet</button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                {%endfor%}
+              </div>
                 </div>
               </div>
             </div>

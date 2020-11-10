@@ -11,7 +11,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                  <input type="text" class="form-control" placeholder="Twitter username" aria-label="Recipient's username" aria-describedby="button-addon2" name="username">
+                  <input type="text" class="form-control" placeholder="Twitter username" aria-label="Recipient's username" aria-describedby="button-addon2" name="username" value="{{name}}">
                   <div class="input-group-append">
                       <button class="btn blue-btn">Analyze</button>
                   </div>
@@ -47,7 +47,7 @@
                           <p class="light-text">@{{ user.screen_name }}</p>
                         </div>
                       </div> 
-                      <p class="bold-text">
+                      <p class="bold-text" id="at">
                         {{user.description}}
                       </p>
                       <hr class="hr mtb" />
@@ -112,15 +112,24 @@
               <span class="badge badge-secondary">Last 10 tweets</span>
               <div class="row">
                 {% for ustweet in user_time[:10]%}
-                <div class="col-sm-12 ">
-                  <div class="card cadet-bg profile-details">
+
+                
+            
+            
+
+                <div class="col-sm-6 ">
+                  
+
+                  {% if ustweet.text[:2] == 'RT' %}
+                  <div class="card orange-bg profile-details">
+                    
                     <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
                       <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
                     </div>
                       <div class="">
                         <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
                         <span class="tweet-span">{{ustweet.text}}</span>
-                        <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
                       </div>
                       <div class="full flex">
                         <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
@@ -128,6 +137,41 @@
                         </a>
                       </div>
                     </div>
+                    {% elif ustweet.text[0] == '@' %}
+                    <div class="card green-bg profile-details">
+                    
+                      <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                        <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                      </div>
+                        <div class="">
+                          <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                          <span class="tweet-span">{{ustweet.text}}</span>
+                          <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                        </div>
+                        <div class="full flex">
+                          <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                            <button class="more">Show full tweet</button>
+                          </a>
+                        </div>
+                      </div>
+                      {% else %}
+                      <div class="card cadet-bg profile-details">
+                    
+                        <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                          <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                        </div>
+                          <div class="">
+                            <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                            <span class="tweet-span">{{ustweet.text}}</span>
+                            <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                          </div>
+                          <div class="full flex">
+                            <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                              <button class="more">Show full tweet</button>
+                            </a>
+                          </div>
+                        </div>
+                    {% endif %}
                 </div>
                 {%endfor%}
                 
