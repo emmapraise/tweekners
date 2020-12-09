@@ -111,7 +111,7 @@ def audit_user():
         return redirect(url_for('user', name=username))
 
 @app.route('/user/<string:name>')
-@login_required
+# @login_required
 def user(name):
     usern = get_user(name)
     mytimeline = get_user_timeline(name)

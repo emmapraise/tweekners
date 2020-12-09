@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css')}}" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/home.css')}}" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/logInUser.css')}}" />
-    <title>Home</title>
+    <title>Search</title>
   </head>
   <body>
     <div class="container">
@@ -98,7 +98,7 @@
                       <div class="">
                         <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
                         <span class="tweet-span">{{ustweet.text}}</span>
-                        <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a>
+                        <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
                       </div>
                       <div class="full flex">
                         <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
