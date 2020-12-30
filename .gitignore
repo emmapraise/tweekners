@@ -5,6 +5,9 @@ venv/
 __pycache__/
 twitter.ipynb
 __pycache__/
+.gitignore
+Another_sentiment_analysis.ipynb
+Another_sentiment_analysis.py
 
 # Environment
 env/

@@ -1,3 +1,4 @@
+from app.sentiment import to_Dataframe
 from enum import unique
 from flask import Flask, render_template,url_for,request, redirect
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
@@ -61,6 +62,12 @@ def home():
 def search():
     tweets = get_tweets_search()
     return render_template('search.html', tweets = tweets)
+
+@app.route('/sentiment')
+def sentiment():
+    tweets = get_tweets_search()
+    data = to_Dataframe(tweets)
+    return render_template('sentiment.html', tweets = data)
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():

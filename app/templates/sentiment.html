@@ -1,36 +1,187 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-        <script>
-            const urls = {
-                model: 'https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/model.json',
-                metadata: 'https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/metadata.json'
-            };
-             
-            async function loadModel(url) {
-                try {
-                    const model = await tf.loadLayersModel(url);
-                    return model;
-                } catch (err) {
-                    console.log(err);
-                }
-            }
-             
-            async function loadMetadata(url) {
-                try {
-                    const metadataJson = await fetch(url);
-                    const metadata = await metadataJson.json();
-                    return metadata;
-                } catch (err) {
-                    console.log(err);
-                }
-            }
-        </script>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    </head>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
 
-    <body>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/home.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/logInUser.css')}}" />
+    <title>Sentiment</title>
 
-    </body>
+    <script>
+      var pos = parseInt("{{tweets.Sentiment.value_counts().Positive}}");
+      var neg = parseInt("{{tweets.Sentiment.value_counts().Negative}}");
+      var sum_tol = pos + neg;
+      window.onload = function () {
+      
+      var chart = new CanvasJS.Chart("chartContainer", {
+        exportEnabled: true,
+        animationEnabled: true,
+        title:{
+          text: "Sentiment"
+        },
+        legend:{
+          cursor: "pointer",
+          itemclick: explodePie
+        },
+        data: [{
+          type: "pie",
+          showInLegend: true,
+          toolTipContent: "{name}: <strong>{y}%</strong>",
+          indexLabel: "{name} - {y}%",
+          dataPoints: [
+            { y: pos/ sum_tol * 100, name: "Postive", exploded: true },
+            { y: neg / sum_tol * 100, name: "Negative" }
+          ]
+        }]
+      });
+      chart.render();
+      }
+      
+      function explodePie (e) {
+        if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+          e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+        } else {
+          e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+        }
+        e.chart.render();
+      
+      }
+      </script>
+      
+
+
+
+  </head>
+  <body>
+    <div class="container">
+      <!-- navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="./index.html"
+          ><img src="{{ url_for('static', filename= './assets/logo.png')}}" id="logo" alt="logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href=""
+                >Search</a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Sentiment <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- main -->
+      <section class="main dark">
+        
+       
+        <!-- rightcontent -->
+        <section class="main">
+          <!-- searched-tweet -->
+          <form class="form-inline my-2 my-lg-0 search" action="{{url_for('audit_search')}}" method="POST">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="EndSars"
+                aria-label="Search for tweet"
+                aria-describedby="button-addon2"
+                name="query"
+                value="{{name}}"
+              />
+              <div class="input-group-append">
+                <button class="btn blue-btn">Get Sentiment</button>
+              </div>
+            </div>
+          </form>
+          <div class="row latest-tweets">
+            <div class="col-sm-12">
+              <div class="card latest-tweet">
+                <!-- <h1 class="bold-text">Last 12 tweets</h1> -->
+
+                
+                <div class="row">
+                  <div class="col-sm-8 ">
+                    <table>
+                      <thead>
+                        <th>Tweets</th>
+                        <th>Sentiment</th>
+                      </thead>
+                      <tbody>
+                        {% for ustweet in tweets.values%}
+                        <tr>
+                          <td><p>{{ustweet[0]}}</td></p>
+                          <td><p>{{ustweet[1]}}</td></p>
+                        </tr>
+                        {%endfor%}
+                      </tbody>
+                    </table>
+                    </div>
+                    <div class="col-sm-4">
+                      Postive are: {{tweets.Sentiment.value_counts().Positive}}
+                      Negative are: {{tweets.Sentiment.value_counts().Negative}}
+                      <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                    </div>
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+    <button onclick="topFunction()" id="goTop" title="Go to top"><img src="./assets/arrow-down.svg" alt=""></button>
+
+    <!-- myjs -->
+<script src="./js/main.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <!-- bootstrap -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
