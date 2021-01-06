@@ -95,7 +95,7 @@ def twitter_logged_in(blueprint, token):
             db.session.commit()
 
         login_user(user)
-    return redirect(url_for('user', name=account_info_json['screen_name']))
+    return redirect(url_for('user', name=username))
 
 
 
@@ -110,6 +110,19 @@ def audit_search():
 def getsearch(name):
     newtweets = get_tweets_search(name)
     return render_template('search.html', tweets = newtweets, name = name)
+
+@app.route('/sentiment', methods = ['GET', 'POST'])
+def audit_sentiment():
+    if request.method == 'POST':
+        query = request.form['query']
+        return redirect(url_for('getsentiment', name=query))
+
+@app.route('/sentiment/<string:name>')
+# @login_required
+def getsentiment(name):
+    newtweets = get_tweets_search(name)
+    data = to_Dataframe(newtweets)
+    return render_template('sentiment.html', tweets = data, name = name)
 
 @app.route('/user', methods = ['GET', 'POST'])
 def audit_user():
