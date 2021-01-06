@@ -22,8 +22,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 
 # Global Parameters
-# nltk.download('stopwords')
-# nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('punkt')
 # nltk.download('wordnet')
 stop_words = set(stopwords.words('english'))
 
