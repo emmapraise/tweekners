@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block content %}
+        <!-- rightcontent -->
+        <section class="main">
+         
+          <!-- welcome -->
+          <div class="content">
+            {% if current_user.is_authenticated %}
+            <form class="form-inline my-2 my-lg-0 username" action="{{url_for('audit_user')}}" method="POST">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                  <input type="text" class="form-control" placeholder="Twitter username" aria-label="Recipient's username" aria-describedby="button-addon2" name="username" value="{{name}}">
+                  <div class="input-group-append">
+                      <button class="btn blue-btn">Analyze</button>
+                  </div>
+                </div>
+            </form>
+            {% endif %}
+            
+            {% if not current_user.is_authenticated %}
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title boldy">👋🏽 Hello, Welcome to tweeter app</h5>
+                    <p class="card-text ">This tool enables you to evaluate Twitter accounts. For example how automated they are, how many Retweets they post, or which websites they link to most often. 
+                      For now you can only see the twitter analysis of a random twitter user, <span><a href="{{ url_for('login') }}"  class=" btw-link"> Login</a></span> to <b id='bold'>analyze</b> any twitter account</p>
+                    
+                  </div>
+                </div>
+              </div>
+          </div>
+          {% endif %}
+
+          <!-- profile -->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card profile-details">
+                  <div class="card-body">
+                    <div class="profile">
+                      <div class="flex">
+                        <img src="{{user.profile_image_url_https}}" alt="dp" />
+                        <div class="name">
+                          <h1 class="bold-text">{{ user.name }}</h1>
+                          <p class="light-text">@{{ user.screen_name }}</p>
+                        </div>
+                      </div> 
+                      <p class="bold-text" id="at">
+                        {{user.description}}
+                      </p>
+                      <hr class="hr mtb" />
+
+                      <div class="follower flex wrap">
+                        <a href="https://twitter.com/{{user.screen_name}}/with_replies" target='blank' class="flex follow">
+                          <h1 class="bold-text">{{user.statuses_count}}</h1>
+                          <p class="light-text pr">tweets</p>
+                        </a>
+                        <a href="https://twitter.com/{{user.screen_name}}/following" target='_blank' class="flex follow">
+                          <h1 class="bold-text">{{user.friends_count}}</h1>
+                          <p class="light-text pr">following</p>
+                        </a>
+                        <a href="https://twitter.com/{{user.screen_name}}/followers" target='_blank' class="flex follow">
+                          <h1 class="bold-text">{{user.followers_count}}</h1>
+                          <p class="light-text pr">followers</p>
+                        </a>
+                        <a href="https://twitter.com/{{user.screen_name}}/likes" target='_blank' class="flex follow">
+                          <h1 class="bold-text">{{user.favourites_count}} </h1>
+                          <p class="light-text pr">likes</p>
+                        </a>
+                      </div>
+                      <hr class="hr mtb" />
+
+                      <div class="more-details row">
+                        
+                          <div class="flex date-joined">
+                            <!-- <img src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="date-joined"> -->
+                            <p class="grey">Created: {{user.created_at.strftime('%B')}}, {{user.created_at.day}}, {{user.created_at.year}} </p>
+                          </div>
+                          <div class="flex id">
+                            <!-- <img src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="date-joined"> -->
+                            <p class="grey">ID: {{user.id}} </p>
+                          </div>
+                          
+                            <div class="flex bio-url">
+                              <!-- <img src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="date-joined"> -->
+                              <p class="grey">URL: <a href="{{user.url}}" class="grey"> {{user.url}}</a></p>
+                            </div>
+                            <div class="flex location">
+                              <!-- <img src="{{ url_for('static', filename= './assets/datePickerIcon.svg')}}" alt="date-joined"> -->
+                              <p class="grey">Location: {{user.location}}</p>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <!-- latest-tweet --> 
+          <!-- <div class="col-sm-12 latest-tweets ">
+           
+        </div> -->
+        <div class="row latest-tweets">
+          <div class="col-sm-12">
+            <div class="card latest-tweet">
+              
+              <span class="badge badge-secondary">Last 10 tweets</span>
+              <div class="row">
+                {% for ustweet in user_time[:10]%}
+
+                
+            
+            
+
+                <div class="col-sm-6 ">
+                  
+
+                  {% if ustweet.text[:2] == 'RT' %}
+                  <div class="card orange-bg profile-details">
+                    
+                    <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                      <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                    </div>
+                      <div class="">
+                        <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                        <span class="tweet-span">{{ustweet.text}}</span>
+                        <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                      </div>
+                      <div class="full flex">
+                        <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                          <button class="more">Show full tweet</button>
+                        </a>
+                      </div>
+                    </div>
+                    {% elif ustweet.text[0] == '@' %}
+                    <div class="card green-bg profile-details">
+                    
+                      <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                        <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                      </div>
+                        <div class="">
+                          <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                          <span class="tweet-span">{{ustweet.text}}</span>
+                          <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                        </div>
+                        <div class="full flex">
+                          <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                            <button class="more">Show full tweet</button>
+                          </a>
+                        </div>
+                      </div>
+                      {% else %}
+                      <div class="card cadet-bg profile-details">
+                    
+                        <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                          <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                        </div>
+                          <div class="">
+                            <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                            <span class="tweet-span">{{ustweet.text}}</span>
+                            <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                          </div>
+                          <div class="full flex">
+                            <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                              <button class="more">Show full tweet</button>
+                            </a>
+                          </div>
+                        </div>
+                    {% endif %}
+                </div>
+                {%endfor%}
+                
+                
+                <div class="load flex">
+              <a href="" class="trend-link">
+                <button class="more">Load more</button>
+              </a>
+            </div>
+              </div>
+            </div>
+          </div>
+      
+      
+        </div>
+        <!-- graphs -->
+        <hr class="hr">
+        <!-- daily rhythm -->
+        <!-- <div class="row my_dataviz">
+          <h3>Daily Rhythm</h3>
+          <div id="my_dataviz" class="col-sm-12"> -->
+          
+          </div>
+        </div>
+        <hr class="hr">
+
+
+        </section>
+{% endblock %}

@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script>
+            jQuery(function($) {
+
+                $(document).ready(function() {
+                  var targetWord, p, textNode, index, nodeWord, nodeAfter;
+              
+                  // Our target word
+                  var string = document.getElementById("example").innerHTML;
+                  targetWord = "@";
+              
+                  // Get the paragraph using jQuery; note that after we
+                  // use jQuery to get it (because it fixes getElementById for
+                  // us on older versions of IE), we then use [0] to access
+                  // the *raw* `p` element.
+                  // Then get the text node from it.
+                  p = $("#example")[0];
+                  textNode = p.firstChild;
+                  var word = string.match(/@\w+/g);
+                  var appendword = word.toString().substring(1)
+                  
+                  // Find our text in the text node
+                  index = textNode.nodeValue.indexOf(targetWord);
+                  if (index !== -1) {
+                    // Split at the beginning of the text
+                    nodeWord = textNode.splitText(index);
+                    
+              
+                    // Split the new node again at the end of the word
+                    nodeAfter = nodeWord.splitText(targetWord.length);
+                    
+                    // Insert a new anchor in front of the word
+                    anchor = document.createElement('a');
+                    anchor.href = "http://twitter.com/"+appendword;
+                    alert("http://twitter.com/"+appendword);
+                    p.insertBefore(anchor, nodeWord);
+              
+                    // Now move the word *into* the anchor
+                    anchor.appendChild(nodeWord);
+                  }
+                });
+              
+              });
+        </script>
+        
+    </head>
+    <body>
+        <script> function getSecondPart(str) {
+            return str.split('@')[1];
+        }
+        // use the function:
+        
+    </script>
+<!-- <script>alert("hey");</script> -->
+<input type="button" id="theButton" value="Make it a link">
+<p id="example">This is the @example @paragraph.</p>
+    </body>
+</html>

@@ -25,6 +25,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+
 twitter_blueprint = make_twitter_blueprint(api_key=consumer_key, api_secret=consumer_secret, redirect_to= 'login')
 app.register_blueprint(twitter_blueprint, url_prefix='/login')
 
@@ -83,7 +84,7 @@ def twitter_logged_in(blueprint, token):
     if account_info.ok:
         account_info_json = account_info.json()
         username = account_info_json['screen_name']
-        user_name = account_info_json['name']
+        user_name = account_info_json['screen_name']#['name']
 
         query = User.query.filter_by(username=username)
 

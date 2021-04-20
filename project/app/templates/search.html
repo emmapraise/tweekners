@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/home.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/logInUser.css')}}" />
+    <title>Search</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="./index.html"
+          ><img src="{{ url_for('static', filename= './assets/logo.png')}}" id="logo" alt="logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href=""
+                >Search <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Support</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- main -->
+      <section class="main dark">
+        
+       
+        <!-- rightcontent -->
+        <section class="main">
+          <!-- searched-tweet -->
+          <form class="form-inline my-2 my-lg-0 search" action="{{url_for('audit_search')}}" method="POST">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="EndSars"
+                aria-label="Search for tweet"
+                aria-describedby="button-addon2"
+                name="query"
+                value="{{name}}"
+              />
+              <div class="input-group-append">
+                <button class="btn blue-btn">Search</button>
+                <button class="btn orange-btn">Sentiment</button>
+              </div>
+            </div>
+          </form>
+          <div class="row latest-tweets">
+            <div class="col-sm-12">
+              <div class="card latest-tweet">
+                <!-- <h1 class="bold-text">Last 12 tweets</h1> -->
+
+                
+                <div class="row">
+                  {% for ustweet in tweets%}
+                  <div class="col-sm-6 ">
+                  {% if ustweet.text[:2] == 'RT' %}
+                  <div class="card orange-bg profile-details">
+                    
+                    <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                      <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                    </div>
+                      <div class="">
+                        <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                        <span class="tweet-span">{{ustweet.text}}</span>
+                        <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                      </div>
+                      <div class="full flex">
+                        <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                          <button class="more">Show full tweet</button>
+                        </a>
+                      </div>
+                    </div>
+                    {% elif ustweet.text[0] == '@' %}
+                    <div class="card green-bg profile-details">
+                    
+                      <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                        <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                      </div>
+                        <div class="">
+                          <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                          <span class="tweet-span">{{ustweet.text}}</span>
+                          <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                        </div>
+                        <div class="full flex">
+                          <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                            <button class="more">Show full tweet</button>
+                          </a>
+                        </div>
+                      </div>
+                      {% else %}
+                      <div class="card cadet-bg profile-details">
+                    
+                        <div class="flex"><a href="" class="bold-text link1">{{ustweet.user.name}}</a>
+                          <a href="https://twitter.com/{{ustweet.user.screen_name}}" class="light-text link2 " target="_blank">@{{ustweet.user.screen_name}} · {{ustweet.created_at.hour}}:{{ustweet.created_at.minute}}, {{ustweet.created_at.day}}-{{ustweet.created_at.strftime('%b')}}-{{ustweet.created_at.year}} </a>
+                        </div>
+                          <div class="">
+                            <!-- <a href="https://twitter.com/{{ustweet.in_reply_to_screen_name}}" class="grey link"> @{{ustweet.in_reply_to_screen_name}}</a>                         -->
+                            <span class="tweet-span">{{ustweet.text}}</span>
+                            <!-- <a href="" class="grey link"> https://t.co/vWz4qAmV1j</a> -->
+                          </div>
+                          <div class="full flex">
+                            <a href="https://twitter.com/{{ustweet.user.screen_name}}/status/{{ustweet.id}}" class="trend-link" target="_blank">
+                              <button class="more">Show full tweet</button>
+                            </a>
+                          </div>
+                        </div>
+                    {% endif %}
+                  </div>
+                {%endfor%}
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+    <button onclick="topFunction()" id="goTop" title="Go to top"><img src="./assets/arrow-down.svg" alt=""></button>
+
+    <!-- myjs -->
+<script src="./js/main.js"></script>
+
+
+    <!-- bootstrap -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
