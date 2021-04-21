@@ -1,0 +1,35 @@
+.search, .username{
+    padding-bottom: 2rem;
+}
+.search .input-group, .username .input-group{
+    width: 100%;
+}
+.input-group>.form-control::placeholder{
+    color: rgba(83, 83, 86,.5);
+}
+.input-group-text{
+    background-color: #ffffff;
+}
+.username .form-control{
+    border-left: none;
+}
+.username .input-group>.form-control{
+    padding-left: 0;
+}
+
+.small-font .bold-text {
+    font-size: 1rem;
+}
+
+.small-font .light-text {
+    font-size: .8rem;
+}
+.small-font .more {
+    font-size: 1rem;
+}
+.small-font .tweet-span {
+    font-size: 1.1rem;
+}
+.small-font .grey {
+    font-size: .75rem;
+}

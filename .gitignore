@@ -9,6 +9,7 @@ __pycache__/
 .gitignore
 Another_sentiment_analysis.ipynb
 Another_sentiment_analysis.py
+app/export/hello.csv
 
 # Environment
 env/

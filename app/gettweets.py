@@ -22,8 +22,8 @@ def get_user_timeline(username = '_emmapraise'):
 
 
 def get_tweets_search(query= 'EndSars',  max_tweet = 20):
-    public_tweets = tweepy.Cursor(api.search, q= query).items(max_tweet)
-    return public_tweets
+    public_tweets = tweepy.Cursor(api.search, q= query, lang='en').items(max_tweet)
+    return public_tweets 
 
 
 
