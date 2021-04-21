@@ -16,8 +16,6 @@ app = Flask(__name__)
 consumer_key = 'PFhdQ6Sd4VaQyg9E3ffmsV12v'
 consumer_secret = 'A8I4iiryzTgvt20tFVCPG5pay2iZYFYAx82Ligk8APFtVidayS'
 
-# access_token = '2960988395-CxEU9JnTuF27RKdO2HJ 1CCCco0slnZnDrWNUFIO'
-# access_token_secret = 'DAYgUKakqBJWSNcjTVmt1ICzjpmNk1hMkQcJYdg4PQ8Lk'
 
 app.config['SECRET_KEY'] = 'thisisthestart'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite' #os.environ['DATABASE_URL']  #
