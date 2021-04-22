@@ -1,6 +1,9 @@
 # Tweekners
 Tweenkers is a application that analysis Twitter account and tweets.
 
+![alt_text](https://github.com/emmapraise/tweekners/blob/main/Screenshot%20(28).png)
+Check it out [here](https://tweeters-app.herokuapp.com/)
+
 ## How to Run the APP
 1. Fork or clone the Repository.
 2. Open the Folder in the cli
@@ -34,5 +37,3 @@ Tweenkers is a application that analysis Twitter account and tweets.
 - Tweepy
 - Postgresql
 
-## What the App look like
-![alt_text](https://github.com/emmapraise/tweekners/blob/main/Screenshot%20(28).png)
