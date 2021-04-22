@@ -7,7 +7,7 @@ Check it out [here](https://tweeters-app.herokuapp.com/)
 ## How to Run the APP
 1. Fork or clone the Repository.
 2. Open the Folder in the cli
-3. Install all dependices using 'pip install  -r requirements.txt'
+3. Install all dependices using ```pip install  -r requirements.txt```
 4. Start the web server using flask run. The app will be serve  at http://localhost:5000/
 5. Go to http://localhost:5000/ in your browser
 
