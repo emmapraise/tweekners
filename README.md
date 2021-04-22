@@ -1,4 +1,4 @@
-# tweekners
+# Tweekners
 Tweenkers is a application that analysis Twitter account and tweets.
 
 ## How to Run the APP
